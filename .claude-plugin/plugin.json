@@ -9,7 +9,7 @@
     "url": "https://wzrd.to"
   },
   "homepage": "https://wzrd.to/claude",
-  "repository": "https://github.com/doo-inc/wzrd-plugin",
+  "repository": "https://github.com/doo-inc/wzrd-claude-plugin",
   "license": "MIT",
   "keywords": [
     "wzrd",
