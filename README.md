@@ -21,7 +21,7 @@ WZRD only receives what a request needs, never your chat history.
 
 1. Install the plugin from Claude's directory, or in Claude Code run:
    ```
-   claude plugin marketplace add doo-inc/wzrd-plugin
+   claude plugin marketplace add doo-inc/wzrd-claude-plugin
    claude plugin install wzrd@wzrd
    ```
 2. Open the WZRD plugin’s **Connectors** tab and enable the WZRD connector (`https://wzrd.to/api/mcp/claude`). Creating a room does not need a password; Connect is only required for account tools.
