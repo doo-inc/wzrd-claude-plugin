@@ -1,0 +1,16 @@
+{
+  "name": "wzrd",
+  "description": "WZRD for Claude: build, edit, publish, share and review.",
+  "owner": {
+    "name": "DOO Inc.",
+    "email": "hello@wzrd.to",
+    "url": "https://wzrd.to"
+  },
+  "plugins": [
+    {
+      "name": "wzrd",
+      "source": "./",
+      "description": "Build and manage shareable experiences with WZRD: create from a conversation or a job, edit in plain language, publish, share, and see how they're doing."
+    }
+  ]
+}

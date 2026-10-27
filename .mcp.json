@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wzrd": {
+      "type": "http",
+      "url": "https://wzrd.to/api/mcp"
+    }
+  }
+}

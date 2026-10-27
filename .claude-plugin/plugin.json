@@ -1,0 +1,30 @@
+{
+  "name": "wzrd",
+  "displayName": "WZRD",
+  "version": "1.0.2",
+  "description": "Build and manage shareable experiences with WZRD: create from a conversation or a job, edit in plain language, publish, share, and see how they're doing.",
+  "author": {
+    "name": "DOO Inc.",
+    "email": "hello@wzrd.to",
+    "url": "https://wzrd.to"
+  },
+  "homepage": "https://wzrd.to/claude",
+  "repository": "https://github.com/doo-inc/wzrd-plugin",
+  "license": "MIT",
+  "keywords": [
+    "wzrd",
+    "conversations",
+    "documents",
+    "knowledge",
+    "productivity",
+    "sales",
+    "onboarding",
+    "portal",
+    "publishing"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://wzrd.to/claude",
+  "supportUrl": "https://wzrd.to/support",
+  "privacyPolicyUrl": "https://wzrd.to/privacy",
+  "termsOfServiceUrl": "https://wzrd.to/terms"
+}
