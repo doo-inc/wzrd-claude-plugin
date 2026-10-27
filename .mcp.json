@@ -2,7 +2,7 @@
   "mcpServers": {
     "wzrd": {
       "type": "http",
-      "url": "https://wzrd.to/api/mcp"
+      "url": "https://wzrd.to/api/mcp/claude"
     }
   }
 }
