@@ -1,9 +1,11 @@
 ---
 name: edit-a-room
-description: Change an existing WZRD room in plain language — rewrite a headline, add or remove a section, update prices or dates, then publish and share it. Use when the user asks to edit, update, fix, publish, unpublish or share one of their WZRD rooms. Do not use to create a new room from a conversation (use build-a-room).
+description: Change an existing WZRD room in plain language — rewrite a headline, add or remove a section, update prices or dates, then publish and share it. Use when the user asks to edit, update, fix, publish, unpublish or share one of their WZRD rooms. Requires a connected WZRD account. Do not use to create a new room from a conversation (use build-a-room).
 ---
 
 # Edit a room
+
+These tools need a **connected WZRD account** (OAuth). Creating a new room does not — use `build-a-room` for that. If account tools return `auth_required`, ask the user to Connect WZRD on the plugin’s Connectors tab, then retry.
 
 1. **Find the room.** Use `rooms_search` with a name or phrase from the user, or `rooms_list`. If more than one room matches, ask which one.
 2. **Read before you change.** Call `blocks_list` (or `rooms_get`) so you edit the right block by reference.

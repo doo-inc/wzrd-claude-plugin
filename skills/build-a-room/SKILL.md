@@ -7,6 +7,8 @@ description: Turn a conversation, documents, or a described job into a structure
 
 Convert conversation and documents into an interactive, source-grounded WZRD room through the WZRD MCP. Pass the relevant conversation and notes to WZRD verbatim so the service can build from the complete source rather than from an intermediate summary.
 
+**Creating a room does not require signing in.** The Claude MCP tools `templates_search`, `rooms_create`, and `tools_make` work without a WZRD account (same model as ChatGPT). Only ask the user to Connect / sign in when they need account tools (list their rooms, edit, publish from an account, analytics).
+
 Read [references/mcp-workflow.md](references/mcp-workflow.md) before any WZRD MCP call. Use [references/room-blueprint.md](references/room-blueprint.md) when you need a decision model for structure, provenance, or a blueprint handoff.
 
 ## Establish scope
@@ -30,7 +32,7 @@ Before using sensitive, personal, confidential, or third-party material, surface
 
 ## Build through WZRD MCP
 
-Use the plugin's WZRD MCP server. Do not substitute a generic website builder, local mockup, direct private API call, or hand-authored “room” artifact. Claude must be signed in to WZRD (OAuth) before account tools run.
+Use the plugin's WZRD MCP server. Do not substitute a generic website builder, local mockup, direct private API call, or hand-authored “room” artifact.
 
 When the person describes a **job** (a proposal, client portal, investor update, menu, course…):
 
@@ -41,9 +43,9 @@ When the person names a job a **WZRD tool** makes (an invoice, a quote, a pitch 
 
 When they only describe a room without naming a template, still call `templates_search` first when a finished outcome exists, then `rooms_create`.
 
-Do not silently retry a response that may have created a room, because that could create a duplicate. If `rooms_create` fails before returning a result, report the failure and preserve the prepared request for a deliberate retry.
+Do not ask for credentials merely to create. Do not silently retry a response that may have created a room. If `rooms_create` fails before returning a result, report the failure and preserve the prepared request for a deliberate retry.
 
-If the user shared more knowledge after creation, add it with `sources_add` or `knowledge_add_text`.
+If the MCP tools are missing from this chat, tell the user to open the WZRD plugin’s Connectors tab (or add `https://wzrd.to/api/mcp/claude` as a custom connector) and try again in a new chat — create still does not require a WZRD password once the connector is loaded.
 
 ## Quality bar
 
@@ -51,13 +53,14 @@ If the user shared more knowledge after creation, add it with `sources_add` or `
 - Keep documents as first-class source files rather than manually paraphrasing their contents.
 - Do not invent names, prices, dates, proof points, permissions, integrations, or completed actions.
 - Keep the user's language in everything you write into the room.
-- By default, publishing from Claude can wait for approval. If `rooms_publish` returns `approval_required`, tell the user to approve it in the room's Studio rather than retrying.
 
 ## Handoff
 
 After `rooms_create` (or `tools_make`) returns:
 
-1. Give the public room URL (`links.preview`, `shareUrl`, or the published share link) and label it **Preview** when it is the visitor-facing link.
+1. Give the public room URL (`links.preview` or `shareUrl`) and label it **Preview**.
 2. Report every entry in `skipped` and the reason WZRD supplied. If `skipped` is empty, say that nothing was skipped.
-3. If the result includes a private editor / claim link (`links.edit` or `claimUrl`), give it separately and label it **Edit & claim**. Never combine or confuse Preview with Edit & claim.
+3. Give the private editor / claim link (`links.edit` or `claimUrl`) separately and label it **Edit & claim**. Explain that it opens the editor and lets them save the room to a WZRD account.
 4. Say what you assumed and what the user may want to fill in.
+
+Never combine or confuse Preview with Edit & claim.

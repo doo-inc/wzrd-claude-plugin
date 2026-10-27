@@ -2,19 +2,19 @@
 
 WZRD turns a conversation into a live, shareable experience: a sales page, onboarding hub, data room, event page or course, with pages, blocks and an assistant that answers visitors by voice or text from everything you gave it.
 
-Ask Claude to create something and describe what it's for. Add the details it should use, and any documents, pictures or websites. WZRD builds it from a matching template, and Claude can publish it and give you the share link.
+Ask Claude to create something and describe what it's for. Add the details it should use, and any documents, pictures or websites. **No WZRD account is needed to create.** WZRD builds and publishes a guest room and gives you two links: **Preview** (share with visitors) and **Edit & claim** (open the editor and save it to your account).
 
-Work with your WZRD work from Claude: find and read it, change it in plain language (every change is labelled and can be undone), publish or unpublish, make share links, see visits, outcomes and what visitors asked, and add to or search what the assistant knows. By default, changes from Claude wait for your approval in Studio.
+Connect your WZRD account when you want Claude to work with *your* rooms: find and read them, change them in plain language (and undo), publish or unpublish, make share links, see visits and activity, and add to or search what the assistant knows.
 
 WZRD only receives what a request needs, never your chat history.
 
 ## What's included
 
-- **WZRD MCP server**: connects Claude to `https://wzrd.to/api/mcp` (OAuth sign-in).
+- **WZRD MCP server**: `https://wzrd.to/api/mcp/claude` — guest create without sign-in; account tools after OAuth.
 - **Skills**:
-  - `build-a-room`: turn a conversation, documents, or a described job into a shareable WZRD experience.
-  - `edit-a-room`: find something you built, change it, publish or share it.
-  - `room-results`: visits, outcomes, activity and visitor questions, with suggestions.
+  - `build-a-room`: turn a conversation, documents, or a described job into a shareable WZRD experience (no account required).
+  - `edit-a-room`: find something in your account, change it, publish or share it (Connect required).
+  - `room-results`: visits, outcomes, activity and visitor questions (Connect required).
   - `wzrd-review`: brand, UX writing, and product-trust reviews for WZRD surfaces.
 
 ## Getting started
@@ -24,26 +24,23 @@ WZRD only receives what a request needs, never your chat history.
    claude plugin marketplace add doo-inc/wzrd-plugin
    claude plugin install wzrd@wzrd
    ```
-2. The first time Claude uses WZRD, you're asked to sign in to your WZRD account and approve what Claude may do. A free account works: sign up at [wzrd.to/signup](https://wzrd.to/signup).
+2. Open the WZRD plugin’s **Connectors** tab and enable the WZRD connector (`https://wzrd.to/api/mcp/claude`). Creating a room does not need a password; Connect is only required for account tools.
 3. Try one of these:
    - "Make a WZRD sales room for my coffee subscription with pricing and an FAQ."
    - "Turn this conversation and its documents into a WZRD room."
-   - "Change the headline of my Acme onboarding room to 'Welcome aboard, Acme'."
-   - "How many visits did my Acme room get this week?"
-   - "Give me the share link for my Acme room."
-
-By default, edits and publishing from Claude can wait for your approval. You approve them in Studio. An owner can change this under **Agents → What connected agents can do**.
+   - "Change the headline of my Acme onboarding room to 'Welcome aboard, Acme'." (needs Connect)
+   - "How many visits did my Acme room get this week?" (needs Connect)
 
 ## What the plugin sends and where
 
 The plugin contains no code that runs on your machine. It has two parts:
 
 - The skills, which are Markdown instructions for Claude (plus reference docs).
-- One remote MCP server, `https://wzrd.to/api/mcp`, run by DOO Inc.
+- One remote MCP server, `https://wzrd.to/api/mcp/claude`, run by DOO Inc.
 
 When you ask Claude to use WZRD, Claude sends that server what the request needs: a description of what to build, the details it should use, and any files, pictures or website addresses you choose to include. WZRD uses this only to build, run and change your work, and sends the results back to Claude. WZRD may fetch the websites you name. It never asks Claude for your chat history.
 
-Sign-in uses OAuth. Claude holds an access token for your WZRD account, limited to the permissions you approved. To disconnect, remove the WZRD connector in Claude's settings, or remove Claude's access under **Connected agents** in Studio.
+Sign-in uses OAuth when you Connect for account tools. To disconnect, remove the WZRD connector in Claude's settings, or remove Claude's access under **Connected agents** in Studio.
 
 ## Privacy Policy
 

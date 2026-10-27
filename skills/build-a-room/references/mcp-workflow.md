@@ -1,6 +1,8 @@
 # WZRD `rooms_create` contract (Claude)
 
-Call `rooms_create` on the WZRD MCP server declared in `.mcp.json` (`https://wzrd.to/api/mcp`). Claude connects with OAuth. Prefer `templates_search` before create when the user describes a finished job.
+Call tools on the WZRD MCP server in `.mcp.json` (`https://wzrd.to/api/mcp/claude`).
+
+**No account is required to create a room.** `templates_search`, `rooms_create`, and `tools_make` run as guest. Connect the person's WZRD account (OAuth) only when they need account tools (list, edit, publish, analytics). Prefer `templates_search` before create when the user describes a finished job.
 
 ## Arguments
 
@@ -45,19 +47,18 @@ If limits are exceeded, do not truncate file bytes or silently omit a user-selec
 
 ## Call and response
 
-Call `rooms_create` exactly once after preflight. Avoid automatic retries after an ambiguous network failure because the first request may already have created a room.
+Call `rooms_create` exactly once after preflight. Do not ask the user to sign in merely to create. Avoid automatic retries after an ambiguous network failure because the first request may already have created a room.
 
 From the result:
 
-- return `links.preview` or `shareUrl` as the public room link and label it **Preview** when it is visitor-facing;
+- return `links.preview` or `shareUrl` as the public room link and label it **Preview**;
 - enumerate every item in `skipped` with the reason supplied by WZRD;
-- if present, return `links.edit` or `claimUrl` separately and label it **Edit & claim**. Explain that it is the private link the user opens to edit the room and save or keep it.
+- return `links.edit` or `claimUrl` separately and label it **Edit & claim**. Explain that it opens the editor and lets the user save the room to their WZRD account.
 
 Never include the Edit & claim URL in public content or describe it as a share link.
 
 ## Related tools
 
-- `templates_search` — find a finished outcome for a job before creating.
-- `tools_make` / `tools_list` — when the user names a job a WZRD tool makes (invoice, quote, pitch deck…).
-- `sources_add` / `knowledge_add_text` — add more knowledge after create.
-- `rooms_publish` / `share_link_create` — publish or share when asked; respect `approval_required`.
+- `templates_search` — find a finished outcome for a job before creating (noauth).
+- `tools_make` / `tools_list` — when the user names a job a WZRD tool makes (noauth for make).
+- Account tools (`rooms_list`, `rooms_search`, `rooms_ai_edit`, `share_link_create`, …) — require Connect / OAuth.
